@@ -54,28 +54,50 @@ function InitialPreloader() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-red-600">
-        <div className="px-6 py-8 text-center space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wide">
+        <div className="px-6 py-10 text-center">
+          {/* Official Notice Header */}
+          <h2 className="text-base font-extrabold text-gray-900 uppercase tracking-widest mb-6">
             Official Notice
           </h2>
           
-          <div className="space-y-1">
-            <h1 className="text-xl font-bold text-red-600 uppercase tracking-wide">
-              Federal Dividend Refund Audit
-            </h1>
-            <p className="text-base font-semibold text-gray-800">
-              RECOVERY CREDIT QUESTIONNAIRE
-            </p>
-          </div>
+          {/* Main Title */}
+          <h1 className="text-lg font-bold text-red-600 uppercase tracking-wide mb-2">
+            Federal Dividend Refund Audit
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-sm font-semibold text-gray-800 uppercase tracking-wide mb-8">
+            Recovery Credit Questionnaire
+          </p>
 
-          <div className="flex items-center justify-center gap-3 py-4">
-            <Loader2 className="w-5 h-5 text-red-600 animate-spin" />
-            <span className="text-gray-600 text-sm">Initializing secure session...</span>
+          {/* Loading Spinner */}
+          <div className="flex items-center justify-center gap-3 py-2">
+            <svg 
+              className="w-5 h-5 text-red-600 animate-spin" 
+              viewBox="0 0 24 24" 
+              fill="none"
+            >
+              <circle 
+                className="opacity-25" 
+                cx="12" 
+                cy="12" 
+                r="10" 
+                stroke="currentColor" 
+                strokeWidth="3"
+              />
+              <path 
+                className="opacity-100" 
+                fill="currentColor" 
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+            <span className="text-gray-500 text-sm">Initializing secure session...</span>
           </div>
         </div>
 
-        <div className="bg-gray-50 px-4 py-3 border-t border-gray-200">
-          <p className="text-center text-xs text-gray-500 uppercase tracking-wider">
+        {/* Footer */}
+        <div className="bg-gray-50 px-4 py-4 border-t border-gray-200">
+          <p className="text-center text-xs text-gray-400 uppercase tracking-wider font-medium">
             Secure Verification System • Confidential • 2026
           </p>
         </div>
