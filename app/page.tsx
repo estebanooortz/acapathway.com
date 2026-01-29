@@ -1,5 +1,5 @@
-import FederalDividendForm from "@/components/federal-dividend-form"
+import { redirect } from "next/navigation"
 
 export default function Home() {
-  return <FederalDividendForm />
+  redirect("/get-ACA-refund")
 }
